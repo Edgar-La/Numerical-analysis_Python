@@ -17,7 +17,7 @@ for t in range(Rows):
 	Matrix.append(vector_aux)
 Matrix = np.array(Matrix)
 '''
-Matrix = np.array([[3, -1, 4],[17, 2, 1],[1, 12, -77]])
+Matrix = np.array([[3.0, -1.0, 4.0],[17.0, 2.0, 1.0],[1.0, 12.0, -77.0]])
 '''
 print('Type 1 by 1 the terms of the column vector: ')
 Column_Matrix = []
@@ -27,7 +27,7 @@ for t in range(Rows):
 	Column_Matrix.append(vector_aux)
 Column_Matrix = np.array(Column_Matrix)
 '''
-Column_Matrix = np.array([[2],[14],[54]])
+Column_Matrix = np.array([[2.0],[14.0],[54.0]])
 
 os.system('clear')
 print(Matrix); print('\n'); print(Column_Matrix); input('\nClick enter to calculate')
@@ -40,6 +40,22 @@ for t in range (Rows):
 Expanded_Matrix = np.array(Expanded_Matrix)
 	#print(Expanded_Matrix[t])
 
-print('\n');print(Expanded_Matrix)
+print('---------------------------\n');print(Expanded_Matrix); print('---------------------------\n')
+
+for t in range(Rows):
+	if Expanded_Matrix[t][t] != 1:
+		Aux = Expanded_Matrix[t][t]
+		for o in range(Columns+1):
+			Expanded_Matrix[t][o] /= Aux
+	print(Expanded_Matrix); print('\n')
+
+	for n in range(Rows):
+		if n != t:
+			#M(o,:)=-M(o,t).*M(t,:)+M(o,:);
+			for o in range(Columns+1):
+				Aux2 = (-Expanded_Matrix[n][t]*Expanded_Matrix[t][o])+Expanded_Matrix[n][o]
+				Expanded_Matrix[n][o] = Aux2
+			print(Expanded_Matrix); print('\n')
 
 #print(Expanded_Matrix)
+#print(range(Columns+1))
