@@ -57,5 +57,6 @@ for t in range(Rows):
 			for o in range(Columns+1):
 				Expanded_Matrix[n][o] = -Aux2*Expanded_Matrix[t][o]+Expanded_Matrix[n][o]#Aux2
 			if Steps_option == 'Yes': print(Expanded_Matrix); print('\n')
+			
 print('Gauss Jordan Matrix')
 print('-------------------------------\n');print(Expanded_Matrix); print('-------------------------------\n')
