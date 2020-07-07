@@ -4,6 +4,7 @@ os.system('clear')
 ############################################################################
 Rows = int(input('Typer the number of rows: '))
 Columns = int(input('Typer the number of Columns: '))
+os.system('clear')
 print('Type 1 by 1 the terms of matrix equations')
 M = []
 for t in range(Rows):
@@ -21,6 +22,7 @@ for t in range(Rows):
 	data.append(float(input()))
 	r.append(data)
 print(r);	print('\n')
+input('Click enter to calculate')
 ############################################################################
 #using assignment operator is not a way to duplicate an array
 M1 = M.copy();	M1[0][0] = r[0][0];  M1[1][0] = r[1][0]; M1[2][0] = r[2][0];
@@ -34,7 +36,8 @@ dM3=(M3[0][0] * (M3[1][1]*M3[2][2]-M3[2][1]*M3[1][2]) - M3[0][1] * (M3[1][0]*M3[
 
 R = np.array([[dM1/dM], [dM2/dM], [dM3/dM]])
 ############################################################################
-print('\n')
+os.system('clear')
+print(M); print('\n'); print(r); print('\n')
 print("Solutions are: ")
 for t in range(Rows): 
     print(R[t][0], end = '\n')
