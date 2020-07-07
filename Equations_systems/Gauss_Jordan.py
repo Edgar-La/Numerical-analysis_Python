@@ -47,15 +47,19 @@ for t in range(Rows):
 		Aux = Expanded_Matrix[t][t]
 		for o in range(Columns+1):
 			Expanded_Matrix[t][o] /= Aux
-	print(Expanded_Matrix); print('\n')
+		print('\n---------------------------------\n')
+		print(Expanded_Matrix); print('\n')
 
 	for n in range(Rows):
 		if n != t:
-			#M(o,:)=-M(o,t).*M(t,:)+M(o,:);
+			# M(n,:)=-M(n,i).*M(i,:)+M(n,:)
+			# M(n,:)=-M(n,t).*M(t,:)+M(n,:)
+			#Aux2 = Expanded_Matrix[n][o]
+			Aux2 = Expanded_Matrix[n][t]
 			for o in range(Columns+1):
-				Aux2 = (-Expanded_Matrix[n][t]*Expanded_Matrix[t][o])+Expanded_Matrix[n][o]
-				Expanded_Matrix[n][o] = Aux2
+				Expanded_Matrix[n][o] = -Aux2*Expanded_Matrix[t][o]+Expanded_Matrix[n][o]#Aux2
+			print('\n---------------**------------------\n')
 			print(Expanded_Matrix); print('\n')
 
-#print(Expanded_Matrix)
+print('---------------------------------------------------\n');print(Expanded_Matrix); print('---------------------------------------------------\n')
 #print(range(Columns+1))
