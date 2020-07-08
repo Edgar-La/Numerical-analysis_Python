@@ -21,8 +21,7 @@ def file_to_vectors_(name):
 		Y_.append(float(matrix_[t][1]))
 	return X_,Y_
 
-
-def regression_matrix_(X_, Y_, order_):
+def regression_matrix_(X_, Y_):
 	matrix_ = []
 	extended_vector = []
 	for t in range (0, order+1):
@@ -36,14 +35,14 @@ def regression_matrix_(X_, Y_, order_):
 		matrix_[t].append(extended_vector[t][0])
 	return	matrix_
 
-def Gauss_jordan(matrix_, order_):
-	for t in range(order_+1):
+def Gauss_jordan(matrix_):
+	for t in range(order+1):
 		if matrix_[t][t] != 1:
 			Aux = matrix_[t][t]
 			for o in range(order+2):
 				matrix_[t][o] /= Aux
 
-		for n in range(order_+1):
+		for n in range(order+1):
 			if n != t:
 				Aux2 = matrix_[n][t]
 				for o in range(order+2):
@@ -51,11 +50,11 @@ def Gauss_jordan(matrix_, order_):
 	return matrix_
 	#print(np.array(matrix_))
 
-def regression_function(Gauss_jordan_matrix_, X_, order_):
+def regression_function(Gauss_jordan_matrix_, X_):
 	function_str = ''
 	print('The regression is:\n')
 	for t in range(order, -1, -1):
-		function_str += str(Gauss_jordan_matrix_[t][3])+'X^'+str(t)+' + '
+		function_str += str(Gauss_jordan_matrix_[t][order+1])+'X^'+str(t)+' + '
 	print(function_str)
 
 	Xsmooth_ = np.arange(min(X_), max(X_), 0.5)
@@ -65,21 +64,23 @@ def regression_function(Gauss_jordan_matrix_, X_, order_):
 		aux = 0
 		for o in range(order, -1, -1):
 			#aux += Gauss_jordan_matrix_[o][3]*(Xsmooth_[t])^o
-			aux += Gauss_jordan_matrix_[o][3]*np.power(Xsmooth_[t],o)
+			aux += Gauss_jordan_matrix_[o][order+1]*np.power(Xsmooth_[t],o)
 		Ysmooth_.append(aux)
 	return Xsmooth_, Ysmooth_
 
 def plotting(X_, Y_, Xsmooth_, Ysmooth_):
-	plt.plot(X_,Y_, '.')
-	plt.plot(Xsmooth_, Ysmooth_)
+	plt.title('Polinomial regression with fit order: ' + str(order))
+	plt.plot(X_,Y_, '.', label="Data")
+	plt.plot(Xsmooth_, Ysmooth_, label="Regression")
+	plt.legend()
 	plt.show()
 
-
-order = 2
+#global order
+order = int(input('Type order regression:	'))
 X, Y = file_to_vectors_(file_name)
-Regression_matrix = regression_matrix_(X, Y, order)
-Gauss_jordan_matrix = Gauss_jordan(Regression_matrix, order)
-Xsmooth, Ysmooth = regression_function(Gauss_jordan_matrix, X, order)
+Regression_matrix = regression_matrix_(X, Y)
+Gauss_jordan_matrix = Gauss_jordan(Regression_matrix)
+Xsmooth, Ysmooth = regression_function(Gauss_jordan_matrix, X)
 plotting(X, Y, Xsmooth, Ysmooth)
 
 #print(np.array(Regression_matrix))
