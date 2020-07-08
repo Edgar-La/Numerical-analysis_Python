@@ -1,4 +1,4 @@
-'''	This program calculates polinomial regression of any .txt file
+'''	This program calculates polynomial regression of any .txt file
 	This code will be 'larger' because we won´t use any math module.
 	jul 08, 2020
 	By Edgar Lara
@@ -8,8 +8,17 @@ import os
 os.system('clear')
 import numpy as np
 import matplotlib.pyplot as plt
+import tkinter
+from tkinter import filedialog
+main_win = tkinter.Tk() 
+main_win.withdraw()
 
-def file_to_vectors_(name):
+#def file_to_vectors_(name):
+def file_to_vectors_():
+	input('Click enter to open explorer file	')
+	#f = open(name, 'r')
+	name = filedialog.askopenfilename(initialdir= "C:/Users/edfli/Desktop/NUM_PY/Numerical-analysis_Python/Regression_analysis")
+	main_win.destroy()
 	f = open(name, 'r')
 	matrix_ = [];	X_ =[];	Y_ = []
 	matrix_ = [line.split() for line in f]
@@ -44,38 +53,38 @@ def Gauss_jordan(matrix_):
 			if n != t:
 				Aux2 = matrix_[n][t]
 				for o in range(order+2):
-					matrix_[n][o] = -Aux2*matrix_[t][o]+matrix_[n][o]#Aux2
+					matrix_[n][o] = -Aux2*matrix_[t][o]+matrix_[n][o]
 	return matrix_
-	#print(np.array(matrix_))
 
 def regression_function(Gauss_jordan_matrix_, X_):
-	function_str = ''
-	print('The regression is:\n')
+	global function_str; function_str = ''
+	print('\n\nThe regression is:')
 	for t in range(order, -1, -1):
 		function_str += str(Gauss_jordan_matrix_[t][order+1])+'X^'+str(t)+' + '
-	print(function_str)
+	print(function_str + '\n')
 
 	Xsmooth_ = np.arange(min(X_), max(X_), 0.5)
-	#print(Xsmooth_)
 	Ysmooth_ = []
 	for t in range(0, len(Xsmooth_)):
 		aux = 0
 		for o in range(order, -1, -1):
-			#aux += Gauss_jordan_matrix_[o][3]*(Xsmooth_[t])^o
 			aux += Gauss_jordan_matrix_[o][order+1]*np.power(Xsmooth_[t],o)
 		Ysmooth_.append(aux)
 	return Xsmooth_, Ysmooth_
 
 def plotting(X_, Y_, Xsmooth_, Ysmooth_):
-	plt.title('Polinomial regression with fit order: ' + str(order))
+	input('Click enter to open the graphic	')
+	plt.title('Polynomial regression with fit order: ' + str(order))
 	plt.plot(X_,Y_, '.', label="Data")
 	plt.plot(Xsmooth_, Ysmooth_, label="Regression")
 	plt.legend()
 	plt.show()
 
-file_name = 'datos.txt'
+print('WELCOME TO POLyNOMIAL REGRESSION CALCULATOR\n\n')
+#file_name = 'datos.txt'
 order = int(input('Type order regression:	'))
-X, Y = file_to_vectors_(file_name)
+#X, Y = file_to_vectors_(file_name)
+X, Y = file_to_vectors_()
 Regression_matrix = regression_matrix_(X, Y)
 Gauss_jordan_matrix = Gauss_jordan(Regression_matrix)
 Xsmooth, Ysmooth = regression_function(Gauss_jordan_matrix, X)
