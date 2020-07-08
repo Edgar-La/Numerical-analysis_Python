@@ -1,6 +1,6 @@
 '''	This program calculates polinomial regression of any .txt file
 	This code will be 'larger' because we won´t use any math module.
-	jun 08, 2020
+	jul 08, 2020
 	By Edgar Lara
 '''
 
@@ -8,8 +8,6 @@ import os
 os.system('clear')
 import numpy as np
 import matplotlib.pyplot as plt
-
-file_name = 'datos2.txt'
 
 def file_to_vectors_(name):
 	f = open(name, 'r')
@@ -75,13 +73,10 @@ def plotting(X_, Y_, Xsmooth_, Ysmooth_):
 	plt.legend()
 	plt.show()
 
-#global order
+file_name = 'datos.txt'
 order = int(input('Type order regression:	'))
 X, Y = file_to_vectors_(file_name)
 Regression_matrix = regression_matrix_(X, Y)
 Gauss_jordan_matrix = Gauss_jordan(Regression_matrix)
 Xsmooth, Ysmooth = regression_function(Gauss_jordan_matrix, X)
 plotting(X, Y, Xsmooth, Ysmooth)
-
-#print(np.array(Regression_matrix))
-#print(np.array(Gauss_jordan_matrix))
