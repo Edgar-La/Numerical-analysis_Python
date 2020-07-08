@@ -17,7 +17,8 @@ main_win.withdraw()
 def file_to_vectors_():
 	input('Click enter to open explorer file	')
 	#f = open(name, 'r')
-	name = filedialog.askopenfilename(initialdir= "C:/Users/edfli/Desktop/NUM_PY/Numerical-analysis_Python/Regression_analysis")
+	current_dir = os.getcwd()
+	name = filedialog.askopenfilename(initialdir= current_dir)
 	main_win.destroy()
 	f = open(name, 'r')
 	matrix_ = [];	X_ =[];	Y_ = []
