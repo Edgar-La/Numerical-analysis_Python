@@ -9,7 +9,7 @@ os.system('clear')	#clean terminal (cmd windows)
 
 def open_file():
 	global f
-	f = open('datos3.txt', 'r') #For write the path directly
+	f = open('datos.txt', 'r') #For write the path directly
 	######This block is for opne file browser
 	'''
 	main_win = tkinter.Tk() 
