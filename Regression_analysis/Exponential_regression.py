@@ -12,7 +12,7 @@ def open_file(name_file_):
 	f = open(name_file_, 'r') #Write the dir directly
 	
 
-def browse_file():
+def browse_file():			#Open file browser
 	global f
 	main_win = tkinter.Tk() 
 	main_win.withdraw()
@@ -89,7 +89,8 @@ def plotting(X_, Y_, Y_regr, r_, r2_):
 
 
 
-open_file('datos3.txt')
+open_file('datos3.txt')	#Write the dir directly
+#browse_file()			#Open file browser
 matrix = file_to_list_matrix()
 close_file()
 X, Y = list_matrix_to_float_vectors(matrix)
