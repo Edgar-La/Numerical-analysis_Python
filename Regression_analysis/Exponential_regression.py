@@ -77,7 +77,7 @@ def correlation_coeficient(X_, Y_, alpha, beta):
 
 def plotting(X_, Y_, Y_regr, r_, r2_):
 	plt.plot(X_, Y_, '.', label = 'Values')
-	plt.plot(X_, Y_reg, 'r-', label = 'Regression')
+	plt.plot(X_, Y_reg, '-', label = 'Regression')
 	plt.title('Exponential regression')
 	plt.xlabel('X')
 	plt.ylabel('Y')
