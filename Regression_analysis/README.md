@@ -20,3 +20,12 @@ Also, I include a [file](https://github.com/Edgar-La/Numerical-analysis_Python/b
 
 And here you can observe an example:
 <img src="https://github.com/Edgar-La/Numerical-analysis_Python/blob/master/Regression_analysis/SS_poly.PNG" width="400" height="390">
+
+
+## Exponential regression
+You can see the code [here](https://github.com/Edgar-La/Numerical-analysis_Python/blob/master/Regression_analysis/Exponential_regression.py).
+
+Also, I include a [file](https://github.com/Edgar-La/Numerical-analysis_Python/blob/master/Regression_analysis/datos3.txt) with the exponential data.
+
+And here you can observe an example:
+<img src="https://github.com/Edgar-La/Numerical-analysis_Python/blob/master/Regression_analysis/SS_exp.PNG" width="400" height="400">
