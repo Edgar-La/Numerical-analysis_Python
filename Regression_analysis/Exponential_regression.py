@@ -82,15 +82,18 @@ def plotting(X_, Y_, Y_regr, r_, r2_):
 	plt.xlabel('X')
 	plt.ylabel('Y')
 	plt.legend()
-	plt.annotate(str("{0:.6f}".format(beta)) + 'exp(' + str("{0:.6f}".format(alpha)) + ' * X)', xy = (5, 90*max(Y_reg)/100))
-	plt.annotate('r = ' + str("{0:.4f}".format(r)), xy = (5, 80*max(Y_reg)/100))
-	plt.annotate('r2 = ' + str("{0:.4f}".format(r2)), xy = (5, 70*max(Y_reg)/100))
+	plt.annotate(str("{0:.6f}".format(beta)) + 'exp(' + str("{0:.6f}".format(alpha)) + ' * X)', xy = (5, 80*max(Y_reg)/100))
+	plt.annotate('r = ' + str("{0:.4f}".format(r)), xy = (5, 70*max(Y_reg)/100))
+	plt.annotate('r2 = ' + str("{0:.4f}".format(r2)), xy = (5, 60*max(Y_reg)/100))
 	plt.show()
 
 
+#print('Type file, example: Data.txt')
+#fileName = input()
+#open_file(fileName)	#Write the dir directly
 
-open_file('datos3.txt')	#Write the dir directly
-#browse_file()			#Open file browser
+
+browse_file()			#Open file browser
 matrix = file_to_list_matrix()
 close_file()
 X, Y = list_matrix_to_float_vectors(matrix)

@@ -62,7 +62,7 @@ def regression_function(Gauss_jordan_matrix_, X_):
 	print('\n\nThe regression is:')
 	for t in range(order, -1, -1):
 		function_str += str(Gauss_jordan_matrix_[t][order+1])+'X^'+str(t)+' + '
-	print(function_str + '\n')
+	print('Polynomial regression: ' + function_str + '\n')
 
 	Xsmooth_ = np.arange(min(X_), max(X_), 0.5)
 	Ysmooth_ = []
@@ -73,9 +73,13 @@ def regression_function(Gauss_jordan_matrix_, X_):
 		Ysmooth_.append(aux)
 	return Xsmooth_, Ysmooth_
 
+
+
 def plotting(X_, Y_, Xsmooth_, Ysmooth_):
 	input('Click enter to open the graphic	')
 	plt.title('Polynomial regression with fit order: ' + str(order))
+	plt.xlabel('x')
+	plt.ylabel('y')
 	plt.plot(X_,Y_, '.', label="Data")
 	plt.plot(Xsmooth_, Ysmooth_, label="Regression")
 	plt.legend()

@@ -40,18 +40,6 @@ def list_matrix_to_float_vectors(matrix_):
 
 def summations(X_, Y_):
 	#Sums that method requires
-	'''
-	Sum_x_  = sum(X_)
-	Sum_y_  = sum(Y_)
-	Sum2_x_ = (sum(X_))**2
-	Prom_y_ = mean(Y_)
-	Sum_x2_ = 0; Sum_xy_ = 0;
-	n = len(X_)
-	for n in range(len(X_)):
-		Sum_x2_ += X_[n]**2
-		Sum_xy_ += X_[n]*Y_[n]
-	return Sum_x_, Sum_y_, Sum2_x_, Sum_x2_, Sum_xy_, n
-	'''
 	n = len(X)
 	SumX  = sum(X)
 	SumY  = sum(Y)
@@ -83,7 +71,7 @@ def plotting_regression(X_, Y_, Y_reg_, alpha_, beta_):
 	plt.plot(X_,Y_, '.', label="Data")
 	plt.plot(X_,Y_reg_, '-', label="Regression")
 	plt.legend()
-	plt.annotate(str("{0:.6f}".format(alpha_)) + ' + ' + str("{0:.6f}".format(beta_)) + 'X', xy=(1, 80*max(Y_)/100))
+	plt.annotate(str("{0:.6f}".format(alpha_)) + ' + ' + str("{0:.6f}".format(beta_)) + 'X', xy=(500, 10))
 	plt.show()
 
 
